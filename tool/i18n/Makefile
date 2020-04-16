@@ -32,6 +32,7 @@ print: ## print
 	@echo
 	@echo LIB_BIN_NAME: $(LIB_BIN_NAME)
 	@echo LIB_BIN_FSPATH: $(LIB_BIN_FSPATH)
+	@echo LIB_CONFIG_FSPATH: $(LIB_CONFIG_FSPATH)
 	@echo SAMPLE_FSPATH: $(SAMPLE_FSPATH)
 	
 	@echo
@@ -80,7 +81,9 @@ gsheet-open: ## gsheet-open
 
 ### build
 build: ## build ****
+	mkdir -p $(LIB_CONFIG_FSPATH)
 	go build -o $(LIB_BIN_FSPATH) .
+	cp ./config/* $(LIB_CONFIG_FSPATH)
 
 build-clean:
 	# go stuff
